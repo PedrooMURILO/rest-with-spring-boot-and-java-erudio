@@ -1,6 +1,6 @@
 package io.github.PedrooMURILO.unitetests.mapper.mocks;
 
-import io.github.PedrooMURILO.data.dto.PersonDTO;
+import io.github.PedrooMURILO.data.dto.v1.PersonDTO;
 import io.github.PedrooMURILO.model.Person;
 
 import java.util.ArrayList;

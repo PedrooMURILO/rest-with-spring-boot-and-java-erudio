@@ -1,7 +1,9 @@
 package io.github.PedrooMURILO.services;
 
-import io.github.PedrooMURILO.data.dto.PersonDTO;
+import io.github.PedrooMURILO.data.dto.v1.PersonDTO;
+import io.github.PedrooMURILO.data.dto.v2.PersonDTOV2;
 import io.github.PedrooMURILO.exception.ResourceNotFoundException;
+import io.github.PedrooMURILO.mapper.custom.PersonMapper;
 import io.github.PedrooMURILO.model.Person;
 import io.github.PedrooMURILO.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ public class PersonServices {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    PersonMapper converter;
 
     public List<PersonDTO> findAll() {
         logger.info("Finding all People!");
@@ -41,6 +45,12 @@ public class PersonServices {
         logger.info("Creating one Person!");
         var entity = parseObject(person, Person.class);
         return parseObject(personRepository.save(entity), PersonDTO.class);
+    }
+
+    public PersonDTOV2 createV2(PersonDTOV2 person) {
+        logger.info("Creating one Person!");
+        var entity = converter.convertDTOToEntity(person);
+        return converter.convertEntityToDTO(personRepository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person) {
