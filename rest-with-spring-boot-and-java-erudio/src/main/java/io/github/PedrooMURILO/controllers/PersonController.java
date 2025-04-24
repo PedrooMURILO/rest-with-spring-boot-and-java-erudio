@@ -1,8 +1,10 @@
 package io.github.PedrooMURILO.controllers;
 
+import io.github.PedrooMURILO.controllers.docs.PersonControllerDocs;
 import io.github.PedrooMURILO.data.dto.v1.PersonDTO;
 import io.github.PedrooMURILO.data.dto.v2.PersonDTOV2;
 import io.github.PedrooMURILO.services.PersonServices;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/api/v1/person")
+@Tag(name = "People", description = "Endpoints for Managing People")
+public class PersonController implements PersonControllerDocs {
 
     @Autowired
     private PersonServices service;
@@ -22,16 +25,18 @@ public class PersonController {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_YAML_VALUE})
+    @Override
     public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}",
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-                MediaType.APPLICATION_XML_VALUE,
-                MediaType.APPLICATION_YAML_VALUE}
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE}
     )
+    @Override
     public PersonDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
         // person.setBirthDay(new Date());
@@ -42,15 +47,16 @@ public class PersonController {
     }
 
     @PostMapping(
-        consumes = {
-                MediaType.APPLICATION_JSON_VALUE,
-                MediaType.APPLICATION_XML_VALUE,
-                MediaType.APPLICATION_YAML_VALUE},
-        produces = {
-                MediaType.APPLICATION_JSON_VALUE,
-                MediaType.APPLICATION_XML_VALUE,
-                MediaType.APPLICATION_YAML_VALUE}
+            consumes = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE},
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_YAML_VALUE}
     )
+    @Override
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
@@ -80,11 +86,13 @@ public class PersonController {
                     MediaType.APPLICATION_XML_VALUE,
                     MediaType.APPLICATION_YAML_VALUE}
     )
+    @Override
     public PersonDTO update(@RequestBody PersonDTO person) {
         return service.update(person);
     }
 
     @DeleteMapping(value = "/{id}")
+    @Override
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
