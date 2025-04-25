@@ -1,4 +1,4 @@
-package io.github.PedrooMURILO.unitetests.mapper.mocks;
+package io.github.PedrooMURILO.unittests.mapper.mocks;
 
 import java.util.ArrayList;
 import java.util.Date;

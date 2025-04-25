@@ -1,4 +1,4 @@
-package io.github.PedrooMURILO.unitetests.mapper.mocks;
+package io.github.PedrooMURILO.unittests.mapper.mocks;
 
 import io.github.PedrooMURILO.data.dto.v1.PersonDTO;
 import io.github.PedrooMURILO.model.Person;

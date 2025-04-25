@@ -1,4 +1,4 @@
-package io.github.PedrooMURILO.unitetests.mapper;
+package io.github.PedrooMURILO.unittests.mapper;
 import static io.github.PedrooMURILO.mapper.ObjectMapper.parseListObjects;
 import static io.github.PedrooMURILO.mapper.ObjectMapper.parseObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,7 +7,7 @@ import java.util.List;
 
 import io.github.PedrooMURILO.data.dto.v1.PersonDTO;
 import io.github.PedrooMURILO.model.Person;
-import io.github.PedrooMURILO.unitetests.mapper.mocks.MockPerson;
+import io.github.PedrooMURILO.unittests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
