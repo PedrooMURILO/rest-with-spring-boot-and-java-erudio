@@ -10,9 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
+// @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/v1/person")
 @Tag(name = "People", description = "Endpoints for Managing People")
@@ -30,6 +30,7 @@ public class PersonController implements PersonControllerDocs {
         return service.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/{id}",
             produces = {
                     MediaType.APPLICATION_JSON_VALUE,
@@ -46,6 +47,7 @@ public class PersonController implements PersonControllerDocs {
         // person.setSensitiveData("Foo Bar")
     }
 
+    @CrossOrigin(origins = {"http://localhost:8080", "exemplo.com"})
     @PostMapping(
             consumes = {
                     MediaType.APPLICATION_JSON_VALUE,
